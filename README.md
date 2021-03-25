@@ -1,6 +1,6 @@
 # asdf-ctlptl
 
-[`ctlptl`][https://github.com/windmilleng/ctlptl] plugin for [asdf](https://github.com/asdf-vm/asdf) version manager.
+[`ctlptl`](https://github.com/tilt-dev/ctlptl) plugin for [asdf](https://github.com/asdf-vm/asdf) version manager.
 
 ## Install
 
