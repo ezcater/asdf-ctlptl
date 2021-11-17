@@ -30,7 +30,9 @@ get_platform() {
 }
 
 get_arch() {
-  [ "x86_64" = "$(uname -m)" ] && echo "x86_64" || echo "i386"
+  # the ctlptl builds map exactly to the names of the architectures
+  # returned by uname -m.
+  uname -m
 }
 
 get_download_url() {
