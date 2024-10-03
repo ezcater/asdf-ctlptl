@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
-set -o pipefail
-# set -x
+set -euo pipefail
 
 ASDF_INSTALL_TYPE=${ASDF_INSTALL_TYPE:-version}
 [ -n "$ASDF_INSTALL_VERSION" ] || (>&2 echo 'Missing ASDF_INSTALL_VERSION' && exit 1)
@@ -30,9 +28,19 @@ get_platform() {
 }
 
 get_arch() {
-  # the ctlptl builds map exactly to the names of the architectures
-  # returned by uname -m.
-  uname -m
+  local arch=$(uname -m)
+  case "$arch" in
+    "x86_64")
+      echo "x86_64"
+      ;;
+    "arm64"|"aarch64")
+      echo "arm64"
+      ;;
+    *)
+      (>&2 echo "Unsupported architecture: $arch. Expected 'x86_64', 'arm64', or 'aarch64'.")
+      exit 1
+      ;;
+  esac
 }
 
 get_download_url() {
