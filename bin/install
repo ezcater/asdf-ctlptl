@@ -24,7 +24,19 @@ install_plugin() {
 }
 
 get_platform() {
-  [ "Linux" = "$(uname)" ] && echo "linux" || echo "mac"
+  local platform="$(uname)"
+  case "$platform" in
+    [dD]arwin*)
+      echo "mac"
+      ;;
+    [lL]inux*)
+      echo "linux"
+      ;;
+    *)
+      (>&2 echo "Unsupported platform: $platform. Expected 'Darwin' or 'Linux'.")
+      exit 1
+      ;;
+  esac
 }
 
 get_arch() {
