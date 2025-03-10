@@ -7,7 +7,7 @@
 ## Install
 
 ```
-asdf plugin-add ctlptl https://github.com/ezcater/asdf-ctlptl.git
+asdf plugin add ctlptl https://github.com/ezcater/asdf-ctlptl.git
 ```
 
 ## Use
